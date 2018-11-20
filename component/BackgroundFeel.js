@@ -36,7 +36,6 @@ export class BackgroundFeel extends React.Component {
 
     return (
       <ImageBackground source={this.state.bg} style={{width: '100%', height: '100%'}}>
-        {this.props.children}
         <View style={{
           position: 'absolute',
           top: 0,
@@ -48,6 +47,7 @@ export class BackgroundFeel extends React.Component {
         }}>
           <Text style={{color: 'white', margin: 10}}>Photo by {photoUserName} on Unsplash</Text>
         </View>
+        {this.props.children}
       </ImageBackground>
     )
   }

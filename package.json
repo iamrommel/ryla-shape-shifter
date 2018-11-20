@@ -8,7 +8,7 @@
     "ios": "expo start --ios",
     "eject": "expo eject",
     "build:a": "expo build:android",
-    "publsh": "expo publish"
+    "publish": "expo publish"
   },
   "dependencies": {
     "expo": "^31.0.2",
