@@ -1,16 +1,15 @@
 {
   "expo": {
-    "name": "ryla-shape-shifter",
-    "description": "This project is really great.",
+    "name": "Ryla Shape Shifter",
+    "description": "A simple shape and color game for kids. ",
     "slug": "ryla-shape-shifter",
     "privacy": "public",
     "sdkVersion": "31.0.0",
     "platforms": ["ios", "android"],
     "version": "1.0.0",
-    "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

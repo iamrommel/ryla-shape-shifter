@@ -1,9 +1,9 @@
 {
-  "name": "empty-project-template",
+  "name": "ryla-shape-shifter",
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "scripts": {
-    "start": "expo start",
+    "dev": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject"
