@@ -1,6 +1,6 @@
 import React from 'react'
-import {Text, PanResponder, Animated, Dimensions} from 'react-native'
-import {ScreenOrientation, AppLoading} from 'expo'
+import {PanResponder, Animated, Dimensions} from 'react-native'
+import {ScreenOrientation} from 'expo'
 
 import {BackgroundFeel} from '../component/BackgroundFeel'
 import {Shape} from './Shape'
@@ -64,7 +64,6 @@ export default class Index extends React.Component {
     do {
       shapeId = random(0, this.shapeNames.length - 1)
       newShape = this.shapeNames[shapeId]
-      console.log(newShape, activeShape)
     }
     while (activeShape === newShape)
     activeShape = newShape
@@ -98,8 +97,6 @@ export default class Index extends React.Component {
     const {activeShape, shapePosition, shapeBackgroundPosition} = this.state
     const panHandlers = this.panResponder.panHandlers
     const layout = this.state.pan.getLayout()
-
-    console.log(activeShape, shapeBackgroundPosition, shapePosition, 'positions')
 
     return (
       <BackgroundFeel>

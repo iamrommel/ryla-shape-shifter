@@ -29,5 +29,17 @@
       "package": "com.lsf.rylashapeshifter",
       "versionCode": 1
     }
+  },
+  "settings" : {
+    "unsplash" : {
+      "accessKey" : "a7cecf00dfb19b6725138db59eb54957e1f3f4cc5c2e5fdb4eba081de47a432e",
+      "secretKey" : "d475852937eccd7d61c501bcc3c32ef50326156ec7d10535a6d57110cd255ba9",
+      "callbackUrl" : "https://api.unsplash.com/"
+    },
+    "imgur" : {
+      "clientId" : "393e364e4ce8ecd",
+      "clientSecret" : "d06dd5a1475e1ebc0d95d0e584c64723586c39b9",
+      "baseUrl" : "https://api.imgur.com/3/"
+    }
   }
 }
