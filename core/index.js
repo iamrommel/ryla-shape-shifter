@@ -19,10 +19,11 @@ export default class Index extends React.Component {
     this.shapeNames = Object.keys(shapeNames)
     this.state = {
       pan: new Animated.ValueXY(),
-      activeShape: this.shapeNames[1]
+      activeShape: this.shapeNames[1],
+      shapePosition: this.getPosition(),
+      shapeBackgroundPosition: this.getPosition(true)
     }
-    this.shapePosition = this.getPosition()
-    this.shapeBackgroundPosition = this.getPosition(true)
+
     this.panResponder = PanResponder.create({    //Step 2
       onStartShouldSetPanResponder: () => true,
       onPanResponderMove: Animated.event([null, { //Step 3
@@ -31,19 +32,15 @@ export default class Index extends React.Component {
       }]),
       onPanResponderRelease: (e, gesture) => {
 
-        // console.log(e, 'e')
-        console.log(gesture, 'gesture')
-        console.log(this.shapeBackgroundPosition, 'shapeBackgroundPosition')
-
         //gesture.moveX should be between left and left + 150
         //gesture.moveY should be between top and top + 150
-        const {left, top} = this.shapeBackgroundPosition
+        const {left, top} = this.state.shapeBackgroundPosition
         const {moveX, moveY} = gesture
 
 
         const allowance = 130
         if (this.between(moveX, left, left + allowance) && this.between(moveY, top, top + allowance)) {
-          console.log('good')
+          //this.reset()
         }
         else {
           Animated.spring(this.state.pan, {toValue: {x: 0, y: 0}}).start()
@@ -55,6 +52,24 @@ export default class Index extends React.Component {
 
   async componentDidMount() {
     await ScreenOrientation.allowAsync(ScreenOrientation.Orientation.LANDSCAPE)
+  }
+
+  reset = () => {
+
+    const shapePosition = this.getPosition()
+    const shapeBackgroundPosition = this.getPosition(true)
+
+    let {activeShape} = this.state
+    let shapeId = 0, newShape = null
+    do {
+      shapeId = random(0, this.shapeNames.length - 1)
+      newShape = this.shapeNames[shapeId]
+      console.log(newShape, activeShape)
+    }
+    while (activeShape === newShape)
+    activeShape = newShape
+
+    this.setState({activeShape, shapePosition, shapeBackgroundPosition})
   }
 
   getPosition = (isBackground = false) => {
@@ -80,17 +95,19 @@ export default class Index extends React.Component {
 
   render() {
 
-    const {activeShape} = this.state
+    const {activeShape, shapePosition, shapeBackgroundPosition} = this.state
     const panHandlers = this.panResponder.panHandlers
     const layout = this.state.pan.getLayout()
 
+    console.log(activeShape, shapeBackgroundPosition, shapePosition, 'positions')
+
     return (
       <BackgroundFeel>
-        <Shape isBackground shape={activeShape} {...this.shapeBackgroundPosition}/>
+        <Shape isBackground shape={activeShape} {...shapeBackgroundPosition}/>
 
         <Animated.View  {...panHandlers}
                         style={[layout]}>
-          <Shape shape={activeShape} {...this.shapePosition}/>
+          <Shape shape={activeShape} {...shapePosition}/>
         </Animated.View>
 
       </BackgroundFeel>
