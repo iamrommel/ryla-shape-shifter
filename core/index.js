@@ -1,18 +1,21 @@
 import React from 'react'
 import {Text} from 'react-native'
-import {ScreenOrientation} from 'expo'
+import {ScreenOrientation, AppLoading} from 'expo'
 import {BackgroundFeel} from '../component/BackgroundFeel'
+import {Shape} from './Shape'
 
 export default class Index extends React.Component {
 
-  componentDidMount() {
-    ScreenOrientation.allowAsync(ScreenOrientation.Orientation.LANDSCAPE)
+  async componentDidMount() {
+    await ScreenOrientation.allowAsync(ScreenOrientation.Orientation.LANDSCAPE)
   }
 
   render() {
+
     return (
       <BackgroundFeel>
-        <Text>Inside</Text>
+        <Shape isBackground shape="pentagon"/>
+        <Shape shape="pentagon"/>
       </BackgroundFeel>
     )
   }
