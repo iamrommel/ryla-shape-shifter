@@ -1,6 +1,5 @@
 import React from 'react'
-import {Text, View, Image, Dimensions} from 'react-native'
-import {random} from 'lodash'
+import {Image} from 'react-native'
 
 export class Shape extends React.Component {
 
@@ -24,34 +23,17 @@ export class Shape extends React.Component {
 
   componentDidMount() {
     let {shape = 'circle', isBackground = false} = this.props
-    const height = Dimensions.get('window').width //this intentional because of landscape orientation
-    const width = Dimensions.get('window').height //this intentional because of landscape orientation
-
 
     //because react-native cannot do dynamic require, we need this
-    let img, top, left
 
-    //setup the image and location if background and normal image
-    //the background is almost on the left most, and
-    //TODO: when boundaryPosition is 0, the the background image is on the left
-
-    if (isBackground) {
-      img = this.images[shape].bg
-      top = random(0, height - 150)
-      left = random(0, (width / 2) - 150)
-    }
-    else {
-      img = this.images[shape].main
-      top = random(0, height - 150,)
-      left = random((width / 2), width - 150)
-    }
-
-    this.setState({img, top, left})
+    let img
+    img = isBackground ? this.images[shape].bg : this.images[shape].main
+    this.setState({img})
   }
 
   render() {
-    const {img, top, left} = this.state
-
+    const {img, } = this.state
+    const {top, left} = this.props
 
     //TODO: better return a loading image here
     if (!img) return null

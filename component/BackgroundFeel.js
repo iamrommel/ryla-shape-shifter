@@ -22,7 +22,7 @@ export class BackgroundFeel extends React.Component {
 
   render() {
     return (
-      <ImageBackground source={this.state.bg} style={{width: '100%', height: '100%'}}>
+      <ImageBackground  source={this.state.bg} style={{width: '100%', height: '100%'}}>
         {this.props.children}
       </ImageBackground>
     )
